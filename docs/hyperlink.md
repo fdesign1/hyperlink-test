@@ -9,3 +9,7 @@ The beginning of an awesome article...
 
 
 [This is a basic link](https://github.com/fdesign1/hyperlink-test/blob/main/Spec%20MOM/reference/mom-java.openapi.yaml)
+
+[This is a relative link to the ./stoplight-flavored-markdown.md file](../Spec MOM/reference/mom-java.openapi.yaml)
+
+
