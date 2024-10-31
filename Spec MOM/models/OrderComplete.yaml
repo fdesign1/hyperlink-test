@@ -1,0 +1,326 @@
+description: 'Order with all the available data: Shipment, invoice, status log'
+type: object
+additionalProperties: false
+x-examples:
+  example-1:
+    id: '320293270'
+    id_channel: 4
+    channel: sprintersports.com
+    idExternalUnique: 4/4069340-SP1
+    date: '07-12-2021 17:16:10'
+    idShippingType: T
+    shippingType: Tienda
+    customerName: Jose Sanchez
+    customerAddress: N-332 Junto Cines Ana
+    customerCity: San Juan
+    customerZip: '03550'
+    customerPhone: '644168721'
+    customerEmail: spindle245@hotmail.es
+    billIdentityCard: ''
+    billName: ''
+    billAddress: ''
+    billCity: ''
+    billZip: ''
+    billPhone: ''
+    billEmail: spindle245@hotmail.es
+    totalAmount: 17.97
+    discountType: '-1'
+    discountDescription: ''
+    discountValue: 0
+    authNumber: '203964'
+    deliveryPoint: '961'
+    deliveryPointName: Sprinter San Juan Alicante
+    tracking: ''
+    state:
+      idWorkflow: PED
+      stateId: '204'
+      state: Prep. dividido (tienda)
+      incidencia: false
+      stateIdWeb: 2
+      notificacion: false
+      esActivo: false
+      visibleATC: false
+      visibleCliente: false
+      notificarCliente: false
+      notificarInterno: false
+      enReserva: true
+      esCancelable: true
+      esInventariable: false
+    hours: 1374/1416
+    commentsCount: 0
+    agency: ''
+    cartonId: ''
+    orderStore: '911'
+    orderStoreName: Sp. Web
+    stateLogOrderList:
+      - log_id: 54746674
+        log_date: '07-12-2021 17:20:41'
+        log_user: Trigger_OrderHead_Insert
+        orderhead_id: 320293270
+        id_external_unique: 4/4069340-SP1
+        stateId: '25'
+        state: Pdte. comp. stock (tienda)
+        visibleATC: true
+        visibleCliente: false
+        esCancelable: true
+        state_ext: PENDIENTE
+      - log_id: 54747914
+        log_date: '07-12-2021 17:48:19'
+        log_user: SprinterAppApi
+        orderhead_id: 320293270
+        id_external_unique: 4/4069340-SP1
+        stateId: '200'
+        state: Pdte. prep. (tienda)
+        visibleATC: true
+        visibleCliente: false
+        esCancelable: true
+        state_ext: ''
+      - log_id: 54795172
+        log_date: '09-12-2021 11:07:27'
+        log_user: '17568'
+        orderhead_id: 320293270
+        id_external_unique: 4/4069340-SP1
+        stateId: '201'
+        state: En prep. (tienda)
+        visibleATC: true
+        visibleCliente: true
+        esCancelable: true
+        state_ext: PEDIDO EN PREPARACION
+      - log_id: 54795369
+        log_date: '09-12-2021 11:11:39'
+        log_user: '17568'
+        orderhead_id: 320293270
+        id_external_unique: 4/4069340-SP1
+        stateId: '204'
+        state: Prep. dividido (tienda)
+        visibleATC: false
+        visibleCliente: false
+        esCancelable: true
+        state_ext: ''
+    id_market: 1
+    nameMarket: España
+    preparationZone: 0
+title: OrderComplete
+properties:
+  id:
+    $ref: ./OrderSequencialId.yaml
+  id_channel:
+    type: number
+  channel:
+    type: string
+    minLength: 1
+  idExternalUnique:
+    $ref: ./OrderId.yaml
+  date:
+    type: string
+    minLength: 1
+    format: date-time
+  idShippingType:
+    type: string
+    minLength: 1
+    enum:
+      - T
+      - D
+      - S
+  shippingType:
+    type: string
+    minLength: 1
+    enum:
+      - Tienda
+      - Domicilio
+  customerName:
+    type: string
+    minLength: 1
+  customerAddress:
+    type: string
+    minLength: 1
+  customerCity:
+    type: string
+    minLength: 1
+  customerZip:
+    type: string
+    minLength: 1
+  customerPhone:
+    type: string
+    minLength: 1
+  customerEmail:
+    type: string
+    minLength: 1
+  billIdentityCard:
+    type: string
+  billName:
+    type: string
+  billAddress:
+    type: string
+  billCity:
+    type: string
+  billZip:
+    type: string
+  billPhone:
+    type: string
+  billEmail:
+    type: string
+    minLength: 1
+  billCountry:
+    type: string
+    description: '`ISO 3166-1 alfa-2` country code'
+    example: ES
+    minLength: 2
+    maxLength: 2
+    enum:
+      - ES
+      - FR
+      - IT
+      - NL
+      - PT
+  totalUnits: {}
+  totalAmount:
+    type: number
+  discountType:
+    type: string
+    minLength: 1
+  discountDescription:
+    type: string
+  discountValue:
+    type: number
+  authNumber:
+    type: string
+    minLength: 1
+  deliveryPoint:
+    type: string
+    minLength: 1
+  deliveryPointName:
+    type: string
+    minLength: 1
+  tracking:
+    type: string
+  state:
+    type: object
+    required:
+      - idWorkflow
+      - stateId
+      - state
+      - incidencia
+      - stateIdWeb
+      - notificacion
+      - esActivo
+      - visibleATC
+      - visibleCliente
+      - notificarCliente
+      - notificarInterno
+      - enReserva
+      - esCancelable
+      - esInventariable
+    properties:
+      idWorkflow:
+        $ref: ./idWorkflow.yaml
+      stateId:
+        type: string
+        minLength: 1
+        pattern: '^[0-9]+'
+        description: Numeric id of the state
+      state:
+        type: string
+        minLength: 1
+        description: State description
+      incidencia:
+        type: boolean
+      stateIdWeb:
+        type: number
+      notificacion:
+        type: boolean
+      orden:
+        type: integer
+      esActivo:
+        type: boolean
+      visibleATC:
+        type: boolean
+      visibleCliente:
+        type: boolean
+      notificarCliente:
+        type: boolean
+      notificarInterno:
+        type: boolean
+      enReserva:
+        type: boolean
+      esCancelable:
+        type: boolean
+      esInventariable:
+        type: boolean
+      descExterna:
+        type: string
+      estadoGLU:
+        type: integer
+  hours:
+    type: string
+    minLength: 1
+    pattern: '^[0-9]+\/[0-9]+'
+    example: 1/9
+  commentsCount:
+    type: number
+    minimum: 0
+    multipleOf: 1
+  agency:
+    type: string
+  cartonId:
+    type: string
+  orderStore:
+    type: string
+    minLength: 3
+    maxLength: 3
+    example: 96D
+  orderStoreName:
+    type: string
+    minLength: 1
+  stateLogOrderList:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    items:
+      $ref: ./OrderHistoricalState.yaml
+  id_market:
+    type: number
+  nameMarket:
+    type: string
+    minLength: 1
+  preparationZone:
+    type: number
+required:
+  - id
+  - id_channel
+  - channel
+  - idExternalUnique
+  - date
+  - idShippingType
+  - shippingType
+  - customerName
+  - customerAddress
+  - customerCity
+  - customerZip
+  - customerPhone
+  - customerEmail
+  - billIdentityCard
+  - billName
+  - billAddress
+  - billCity
+  - billZip
+  - billPhone
+  - billEmail
+  - totalAmount
+  - discountType
+  - discountDescription
+  - discountValue
+  - authNumber
+  - deliveryPointName
+  - tracking
+  - state
+  - hours
+  - commentsCount
+  - agency
+  - cartonId
+  - orderStore
+  - orderStoreName
+  - stateLogOrderList
+  - id_market
+  - nameMarket
+  - preparationZone

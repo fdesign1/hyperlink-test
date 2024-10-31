@@ -1,0 +1,7 @@
+type: string
+title: StoreId
+description: StoreId
+minLength: 3
+maxLength: 3
+pattern: '^[a-zA-Z0-9]{3}$'
+example: 96D

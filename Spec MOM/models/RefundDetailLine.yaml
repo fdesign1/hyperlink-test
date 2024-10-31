@@ -1,0 +1,87 @@
+title: RefundDetailLine
+description: Line of a refund
+type: object
+x-examples:
+  RefundDetailLine#Example:
+    id: '12264'
+    idRefund: '5469'
+    id_line_external: '631556'
+    codigo: '0199378'
+    sku: '0199378055153'
+    description: Zapatillas Azules Up Dylan Niño
+    sizeErp: '26'
+    units: 1
+    priceUnit: 9.99
+    priceUnitBase: 8.26
+    priceTotal: 9.99
+    refundCauseId: D05
+    refundCauseDesc: Desistimiento
+    discountType: '-1'
+    discountDescription: ''
+    discountValue: 0
+x-tags:
+  - order
+properties:
+  id:
+    type: string
+    minLength: 1
+  idRefund:
+    type: string
+    minLength: 1
+  id_line_external:
+    type: number
+  codigo:
+    type: string
+    minLength: 1
+  sku:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  sizeErp:
+    type: string
+    minLength: 1
+  units:
+    type: number
+  priceUnit:
+    type: number
+  priceUnitBase:
+    type: number
+  priceTotal:
+    type: number
+  refundCauseId:
+    type: string
+    minLength: 1
+  refundCauseDesc:
+    type: string
+    minLength: 1
+  discountType:
+    type: string
+    enum:
+      - '-1'
+      - '1'
+    description: |-
+      `-1` if the order doesn't have a discount.\
+      `1` if the order has a discount.
+  discountDescription:
+    type: string
+  discountValue:
+    type: number
+required:
+  - id
+  - idRefund
+  - id_line_external
+  - codigo
+  - sku
+  - description
+  - sizeErp
+  - units
+  - priceUnit
+  - priceUnitBase
+  - priceTotal
+  - refundCauseId
+  - refundCauseDesc
+  - discountType
+  - discountDescription
+  - discountValue

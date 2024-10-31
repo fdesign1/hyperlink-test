@@ -1,0 +1,118 @@
+description: Refund of an order
+type: object
+x-examples:
+  example-1:
+    id: '3411'
+    idOrder: '504299'
+    idRefund: SAC0003388
+    idExternalUnique: 4/256673
+    date: '2017-09-15 13:56:42'
+    customerName: irene rodriguez
+    customerPhone: '600760863'
+    totalAmount: 3.99
+    idOnlineTransaction: '000000256673'
+    authNumber: '893353'
+    discountType: '-1'
+    discountDescription: ''
+    discountValue: 0
+    amountToRefund: 23.6
+    stateId: '5'
+    stateName: No procede abono
+    hours: 39049
+    commentsCount: 1
+title: Refund
+properties:
+  amountToRefund:
+    type: number
+    minimum: 0
+  authNumber:
+    type: string
+    minLength: 1
+  idOrder:
+    type: string
+    minLength: 1
+  id:
+    type: string
+    minLength: 1
+  idRefund:
+    type: string
+    minLength: 1
+  idchannel:
+    type: string
+    nullable: true
+  idExternalUnique:
+    type: string
+    minLength: 1
+  date:
+    type: string
+    minLength: 1
+    format: date
+    description: 'Refund date in `YYYY-MM-DD HH:MM:SS` format'
+  customerIdentityCard:
+    type: string
+    nullable: true
+  memberid:
+    type: number
+    nullable: true
+  customerName:
+    type: string
+    minLength: 1
+  customerPhone:
+    type: string
+    minLength: 1
+  totalUnits:
+    type: number
+    nullable: true
+  totalAmount:
+    type: number
+  idOnlineTransaction:
+    type: string
+    minLength: 1
+  discountType:
+    type: string
+    minLength: 1
+    enum:
+      - '-1'
+      - '1'
+      - '2'
+  discountDescription:
+    type: string
+  discountValue:
+    type: number
+  deliveryPoint:
+    type: string
+    nullable: true
+  tracking:
+    type: string
+    nullable: true
+  stateId:
+    type: string
+    minLength: 1
+  stateName:
+    type: string
+    minLength: 1
+  hours:
+    type: number
+  commentsCount:
+    type: number
+  shippingPrice:
+    type: string
+    nullable: true
+required:
+  - authNumber
+  - idOrder
+  - id
+  - idRefund
+  - idExternalUnique
+  - date
+  - customerName
+  - customerPhone
+  - totalAmount
+  - idOnlineTransaction
+  - discountType
+  - discountDescription
+  - discountValue
+  - stateId
+  - stateName
+  - hours
+  - commentsCount

@@ -1,0 +1,152 @@
+title: OrderV2
+description: Order Model v2
+type: object
+additionalProperties: false
+examples:
+  - id: '323152015'
+    idExternalUnique: 4/6579972-SP1
+    date: '2023-09-24 10:19:34'
+    customerIdentityCard: '262262649'
+    customerName: John Doe
+    customerPhone: '+34555444333'
+    totalUnits: null
+    totalAmount: 5.99
+    discountType: '-1'
+    discountDescription: ''
+    discountValue: 0
+    authNumber: C7H88VR64ZBR8HG2
+    deliveryPoint: 9YX
+    deliveryPointName: Sz. Lisboa Colombo
+    tracking: ''
+    stateId: '204'
+    stateName: Split prep. (store)
+    hours: 1611/1612
+    commentsCount: 0
+    agency: ''
+    cartonId: '00184005000001509565'
+    email: user.email@gmail.com
+    orderStore: '911'
+    orderStoreName: Sp. Web
+    nameMarket: Portugal
+    paymentMethod: MBWAY
+    preparationZone: 0
+    idStorePreparation: 9YX
+    nameStorePreparation: Sport Zone Colombo
+    trackingLink: ''
+    id_market: 2
+properties:
+  id:
+    type: string
+    minLength: 1
+  idExternalUnique:
+    type: string
+    minLength: 1
+  date:
+    type: string
+    minLength: 1
+    format: date-time
+  customerIdentityCard:
+    type: string
+  customerName:
+    type: string
+    minLength: 1
+  customerPhone:
+    type: string
+    minLength: 1
+  totalUnits:
+    type: integer
+    nullable: true
+  totalAmount:
+    type: number
+  discountType:
+    type: string
+    minLength: 1
+  discountDescription:
+    type: string
+  discountValue:
+    type: number
+  authNumber:
+    type: string
+    minLength: 1
+  deliveryPoint:
+    type: string
+    minLength: 1
+  deliveryPointName:
+    type: string
+    minLength: 1
+  tracking:
+    type: string
+  stateId:
+    type: string
+    minLength: 1
+  stateName:
+    type: string
+    minLength: 1
+  hours:
+    type: string
+    minLength: 1
+  commentsCount:
+    type: number
+  agency:
+    type: string
+  cartonId:
+    type: string
+    minLength: 1
+  email:
+    type: string
+    minLength: 1
+  orderStore:
+    type: string
+    minLength: 1
+  orderStoreName:
+    type: string
+    minLength: 1
+  nameMarket:
+    type: string
+    minLength: 1
+  paymentMethod:
+    type: string
+    minLength: 1
+  preparationZone:
+    type: number
+  idStorePreparation:
+    type: string
+    minLength: 1
+  nameStorePreparation:
+    type: string
+    minLength: 1
+  trackingLink:
+    type: string
+  id_market:
+    type: number
+required:
+  - id
+  - idExternalUnique
+  - date
+  - customerIdentityCard
+  - customerName
+  - customerPhone
+  - totalAmount
+  - discountType
+  - discountDescription
+  - discountValue
+  - authNumber
+  - deliveryPoint
+  - deliveryPointName
+  - tracking
+  - stateId
+  - stateName
+  - hours
+  - commentsCount
+  - agency
+  - cartonId
+  - email
+  - orderStore
+  - orderStoreName
+  - nameMarket
+  - paymentMethod
+  - preparationZone
+  - idStorePreparation
+  - nameStorePreparation
+  - trackingLink
+  - id_market

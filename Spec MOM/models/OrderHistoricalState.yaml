@@ -1,0 +1,59 @@
+description: Historical state of an order
+type: object
+x-examples:
+  example-1:
+    log_id: 57559252
+    log_date: '07-02-2022 01:52:12'
+    log_user: Trigger_OrderHead_Insert
+    orderhead_id: 320576039
+    id_external_unique: 4/4354166-SP1
+    stateId: '15'
+    state: Pendiente Comprobar Stock
+    visibleATC: true
+    visibleCliente: true
+    esCancelable: true
+    state_ext: PENDIENTE
+properties:
+  log_id:
+    type: number
+    multipleOf: 1
+  log_date:
+    type: string
+    minLength: 1
+    format: date-time
+  log_user:
+    type: string
+    minLength: 1
+  orderhead_id:
+    type: number
+    multipleOf: 1
+  id_external_unique:
+    $ref: ./OrderId.yaml
+  stateId:
+    type: string
+    minLength: 1
+  state:
+    type: string
+    minLength: 1
+  visibleATC:
+    type: boolean
+  visibleCliente:
+    type: boolean
+  esCancelable:
+    type: boolean
+  state_ext:
+    type: string
+    minLength: 1
+    description: Empty values could be `""` or `"NULL"`
+required:
+  - log_id
+  - log_date
+  - log_user
+  - orderhead_id
+  - id_external_unique
+  - stateId
+  - state
+  - visibleATC
+  - visibleCliente
+  - esCancelable
+  - state_ext

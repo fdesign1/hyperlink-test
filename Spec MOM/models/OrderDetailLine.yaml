@@ -1,0 +1,83 @@
+title: OrderDetailLine
+description: 'Line of an order'
+type: object
+x-examples:
+  OrderDetailLine#Example:
+    id: '14547405'
+    idOrder: '320213567'
+    id_line_external: 13340953
+    codigo: '0277796'
+    sku: '0277796061052'
+    description: Calcetines Running Ipso
+    sizeErp: L
+    units: 1
+    priceUnit: 2.39
+    priceTotal: 2.39
+    discountType: '-1'
+    discountDescription: ''
+    discountValue: 0
+    stateId: '204'
+    stateName: Prep. dividido (tienda)
+properties:
+  id:
+    type: string
+    minLength: 1
+  idOrder:
+    type: string
+    minLength: 1
+  id_line_external:
+    type: number
+  codigo:
+    type: string
+    minLength: 1
+  sku:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  sizeErp:
+    type: string
+    minLength: 1
+  units:
+    type: number
+  priceUnit:
+    type: number
+  priceTotal:
+    type: number
+  discountType:
+    type: string
+    enum:
+      - '-1'
+      - '1'
+    description: |-
+      `-1` if the order doesn't have a discount.\
+      `1` if the order has a discount.
+  discountDescription:
+    type: string
+  discountValue:
+    type: number
+  stateId:
+    type: string
+    minLength: 1
+  stateName:
+    type: string
+    minLength: 1
+required:
+  - id
+  - idOrder
+  - id_line_external
+  - codigo
+  - sku
+  - description
+  - sizeErp
+  - units
+  - priceUnit
+  - priceTotal
+  - discountType
+  - discountDescription
+  - discountValue
+  - stateId
+  - stateName
+x-tags:
+  - order

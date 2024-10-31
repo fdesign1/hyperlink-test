@@ -1,0 +1,41 @@
+title: ErrorDetails
+x-stoplight:
+  id: pxeezurjjjx35
+type: object
+description: Detailed information about an error.
+additionalProperties: false
+minProperties: 2
+maxProperties: 3
+examples:
+  - code: NULL_VALUE
+    target: phoneNumber
+    message: Phone number must not be null
+  - code: INVALID_VALUE
+    target: address
+    message: Address is not valid
+x-tags:
+  - error
+properties:
+  code:
+    type: string
+    x-stoplight:
+      id: 69eh39h8sgb9n
+    description: "Code of the error. **MUST** be in `SCREAMING_SNAKE_CASE` format.\r\n\r\nFor argument validation, `INVALID_VALUE` and `NULL_VALUE` **SHOULD** be used, using `target` property  to identify the argument."
+    pattern: '^([A-Z]+_?[A-Z0-9]*)$'
+  target:
+    type: string
+    x-stoplight:
+      id: r40czdbmtv40u
+    description: "Property to which the error detail refers. Mandatory if the error refers to a field in the request.\r\n**MUST** be in `camelCase` format."
+    pattern: '^[a-z]+?([a-zA-Z0-9]*)$'
+    minLength: 1
+  message:
+    type: string
+    x-stoplight:
+      id: vo14x3f5x8e38
+    description: A more concrete messaage with the details of the error.
+    minLength: 1
+    maxLength: 256
+required:
+  - code
+  - message

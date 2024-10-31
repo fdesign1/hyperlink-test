@@ -1,0 +1,42 @@
+title: OrderComment
+description: 'A comment for an order'
+type: object
+x-examples:
+  OrderComment#Example:
+    id: '98056'
+    idOrder: '961392'
+    date: '2019-02-27 08:48:54'
+    login: Em77331858
+    stateId: '204'
+    stateName: Prep. dividido (tienda)
+    comment: 'Incidencia - Articulo: 0205209, Talla: 2, 1 units - Observaciones: No hay stock'
+properties:
+  id:
+    type: string
+    minLength: 1
+  idOrder:
+    $ref: './OrderSequencialId.yaml'
+  date:
+    type: string
+    minLength: 1
+    format: date-time
+  login:
+    type: string
+    minLength: 1
+  stateId:
+    type: string
+    minLength: 1
+  stateName:
+    type: string
+    minLength: 1
+  comment:
+    type: string
+    minLength: 1
+required:
+  - id
+  - idOrder
+  - date
+  - login
+  - stateId
+  - stateName
+  - comment

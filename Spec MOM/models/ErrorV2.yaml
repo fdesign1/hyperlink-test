@@ -1,0 +1,57 @@
+title: Error
+x-stoplight:
+  id: 9c1gowvxifj9a
+type: object
+description: >-
+  In case of error responses, a JSON document **MAY** be sent back with
+  information about the failure.
+
+
+  When an error is sent to the caller, it can contain a JSON document as
+  response body. If a JSON document is sent to explain the reason for the
+  failure, it must follow the next schema.
+additionalProperties: false
+minProperties: 1
+maxProperties: 3
+properties:
+  message:
+    type: string
+    x-stoplight:
+      id: twcjz2lnjxlkx
+    minLength: 1
+    maxLength: 256
+    description: A concrete message of the error.
+  traceparent:
+    type: string
+    x-stoplight:
+      id: bok79yyiardza
+    description: >-
+      Id of the transaction to relate the error with the log. OTEL traceparent
+      **SHOULD** be used if available.
+  details:
+    type: array
+    x-stoplight:
+      id: w6ee5cqjhnyet
+    minItems: 1
+    description: An array of `ErrorDetail` elements with the error details.
+    items:
+      $ref: ./ErrorDetails.yaml
+      x-stoplight:
+        id: 5qwic006t483t
+required:
+  - message
+x-tags:
+  - error
+examples:
+  - message: Error Request Invalid Arguments
+    traceparent: 00-355ec15987d0c3b25cfce2e3455c149a-22204b396147b45c-01
+    details:
+      - code: NULL_VALUE
+        target: phoneNumber
+        message: Phone number must not be null
+      - code: NULL_VALUE
+        target: lastName
+        message: Last name must not be null
+      - code: INVALID_VALUE
+        target: address
+        message: Address is not valid

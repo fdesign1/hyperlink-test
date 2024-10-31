@@ -1,0 +1,26 @@
+title: GenerateInvoiceResponseSuccess
+type: object
+x-tags:
+  - order
+properties:
+  id_order:
+    type: string
+    pattern: '^[0-9]+'
+    minLength: 1
+    example: '411222'
+  id_channel:
+    type: integer
+    example: 4
+  invoice:
+    type: string
+    format: byte
+    description: Invoice PDF file in base64
+required:
+  - id_order
+  - id_channel
+  - invoice
+examples:
+  - id_order: '411222'
+    id_channel: 4
+    invoice: JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9D
+description: Success response received in J_MOM_ORDERS_GENERATE_INVOICE

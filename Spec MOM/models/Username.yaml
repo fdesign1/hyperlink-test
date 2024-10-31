@@ -1,0 +1,6 @@
+title: Username
+type: string
+pattern: '^SPRINTER\\\\([a-zA-Z]|\.)*'
+example: SPRINTER\\domain.username
+x-tags:
+  - auth

@@ -1,0 +1,170 @@
+title: Order
+description: 'Order Model'
+type: object
+x-examples:
+  Order#Model:
+    id: '320113450'
+    idExternalUnique: 4/3888772-SP1
+    date: '2021-11-07 21:41:09'
+    customerIdentityCard: 11111111L
+    customerName: Antonio Andrés Penalva Martínez
+    customerPhone: '675868972'
+    totalAmount: 20
+    discountType: '-1'
+    discountDescription: ''
+    discountValue: 0
+    authNumber: 1RW13761AN938100E
+    deliveryPoint: '966'
+    deliveryPointName: Sprinter Orihuela
+    tracking: ''
+    stateId: '204'
+    stateName: Prep. dividido (tienda)
+    hours: 4/18
+    commentsCount: 0
+    agency: ''
+    cartonId: '00184005000000668971'
+    email: penalvamartineztoni@gmail.com
+    orderStore: '911'
+    orderStoreName: Sp. Web
+    nameMarket: España
+    paymentMethod: PayPal
+    preparationZone: 0
+    idStorePreparation: '966'
+    nameStorePreparation: Sprinter Orihuela
+    trackingLink: ''
+    naturalOrder: 1
+    order: 1
+    pageActualRecords: 34
+    totalRecords: 338
+    draw: 2
+    id_market: 1
+properties:
+  id:
+    type: string
+    minLength: 1
+  idExternalUnique:
+    type: string
+    minLength: 1
+  date:
+    type: string
+    minLength: 1
+  customerIdentityCard:
+    type: string
+  customerName:
+    type: string
+    minLength: 1
+  customerPhone:
+    type: string
+    minLength: 1
+  totalUnits:
+    type: integer
+    nullable: true
+  totalAmount:
+    type: number
+  discountType:
+    type: string
+    minLength: 1
+  discountDescription:
+    type: string
+  discountValue:
+    type: number
+  authNumber:
+    type: string
+    minLength: 1
+  deliveryPoint:
+    type: string
+    minLength: 1
+  deliveryPointName:
+    type: string
+    minLength: 1
+  tracking:
+    type: string
+  stateId:
+    type: string
+    minLength: 1
+  stateName:
+    type: string
+    minLength: 1
+  hours:
+    type: string
+    minLength: 1
+  commentsCount:
+    type: number
+  agency:
+    type: string
+  cartonId:
+    type: string
+    minLength: 1
+  email:
+    type: string
+    minLength: 1
+  orderStore:
+    type: string
+    minLength: 1
+  orderStoreName:
+    type: string
+    minLength: 1
+  nameMarket:
+    type: string
+    minLength: 1
+  paymentMethod:
+    type: string
+    minLength: 1
+  preparationZone:
+    type: number
+  idStorePreparation:
+    type: string
+    minLength: 1
+  nameStorePreparation:
+    type: string
+    minLength: 1
+  trackingLink:
+    type: string
+  naturalOrder:
+    type: number
+  order:
+    type: number
+  pageActualRecords:
+    type: number
+  totalRecords:
+    type: number
+  draw:
+    type: number
+  id_market:
+    type: number
+required:
+  - id
+  - idExternalUnique
+  - date
+  - customerIdentityCard
+  - customerName
+  - customerPhone
+  - totalAmount
+  - discountType
+  - discountDescription
+  - discountValue
+  - authNumber
+  - deliveryPoint
+  - deliveryPointName
+  - tracking
+  - stateId
+  - stateName
+  - hours
+  - commentsCount
+  - agency
+  - cartonId
+  - email
+  - orderStore
+  - orderStoreName
+  - nameMarket
+  - paymentMethod
+  - preparationZone
+  - idStorePreparation
+  - nameStorePreparation
+  - trackingLink
+  - naturalOrder
+  - order
+  - pageActualRecords
+  - totalRecords
+  - draw
+  - id_market

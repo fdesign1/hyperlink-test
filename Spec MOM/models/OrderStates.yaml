@@ -1,0 +1,45 @@
+title: OrderStates
+description: Order States model
+type: object
+examples:
+  - workflow: PED
+    key: '204'
+    label: Prep. dividido (tienda)
+    amount: 0
+    incidence: false
+  - workflow: DEV
+    key: '99'
+    label: Prep. dividido (tienda)
+    amount: 0
+    incidence: false    
+properties:
+  workflow:
+    $ref: ./idWorkflow.yaml
+    description: Workflow Id
+  key:
+    type: string
+    minLength: 1
+    default: "0"
+    example: '-2'
+    pattern: ^\-?\d+$
+    description: Numeric key for the state
+  label:
+    type: string
+    minLength: 1
+    description: Title of the state
+  amount:
+    type: integer
+    minimum: 0
+    multipleOf: 1
+    description: Qty of orders in the state
+  incidence:
+    type: boolean
+    nullable: true
+    default: false
+    description: 'If `true`, the state means incidence with the order'
+required:
+  - workflow
+  - key
+  - label
+  - amount
+  - incidence

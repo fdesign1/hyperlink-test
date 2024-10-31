@@ -1,0 +1,8 @@
+type: string
+title: idWorkflow
+description: Id for workflows
+enum:
+  - DEV
+  - PED
+  - RES
+example: DEV

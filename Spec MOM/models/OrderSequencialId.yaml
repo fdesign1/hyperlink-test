@@ -1,0 +1,8 @@
+title: OrderSequencialId
+type: string
+description: Sequencial Id of an order
+pattern: '^[0-9]+'
+minLength: 1
+example: '930199'
+x-tags:
+  - order

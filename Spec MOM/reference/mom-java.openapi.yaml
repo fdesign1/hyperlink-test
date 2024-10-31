@@ -1,0 +1,1852 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: MOM Java API
+  description: API REST specifications for Multichannel Order Management
+  contact:
+    name: Front Solutions Team
+    email: grupo.front.tic@sprintersports.com
+    url: sprintersports.com
+  license:
+    name: license Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  - description: PRE
+    url: 'http://tomcat1-srv.sprinter.net:8080'
+  - description: PRO
+    url: 'https://lb-app-int.sprinter.es'
+paths:
+  /SprinterMulti/api/v1/deliveryPoint:
+    get:
+      summary: J_MOM_STORES_SEARCH
+      tags:
+        - store
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    deliveryPoints:
+                      - id_point: '074'
+                        id_channel: 4
+                        id_market: 1
+                        name: Sprinter Avda.Dilar
+                        email: tienda074@sprinter.es
+                        country: ES
+                        province: GRANADA
+                        city: GRANADA
+                        address: Dílar 24
+                        zip: '18007'
+                        phone: '667462234'
+                        enabled: 1
+                        longitude: -3.600018
+                        latitude: 37.15861
+                        cac: 1
+                        type: SPR
+                        has_multichannel: 1
+                        point_multichannel: 1
+                        country_name: ESPAÑA
+                        cacCriteria:
+                          - '20000'
+                      - id_point: '903'
+                        id_channel: 4
+                        id_market: 1
+                        name: Sprinter Alcira
+                        email: tienda903@sprinter.es
+                        country: ES
+                        province: VALENCIA
+                        city: Alzira
+                        address: de Albalat PC Carrefour
+                        zip: '46600'
+                        phone: '673609920'
+                        enabled: 1
+                        longitude: -0.429749
+                        latitude: 39.162037
+                        cac: 1
+                        type: SPR
+                        has_multichannel: 1
+                        point_multichannel: 1
+                        country_name: ESPAÑA
+                        cacCriteria:
+                          - '20000'
+                additionalProperties: false
+                minProperties: 1
+                maxProperties: 1
+                properties:
+                  deliveryPoints:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        id_point:
+                          type: string
+                          description: Store ID
+                          example: 96D
+                          minLength: 3
+                          maxLength: 3
+                        id_channel:
+                          type: integer
+                          format: int32
+                          example: 4
+                          minimum: 1
+                          multipleOf: 1
+                          description: Channel ID
+                        id_market:
+                          type: integer
+                          example: 1
+                          minimum: 1
+                          multipleOf: 1
+                          format: int32
+                          description: Store market Id
+                        name:
+                          type: string
+                          description: Store
+                          example: Sprinter Avda.Dilar
+                          minLength: 1
+                        email:
+                          type: string
+                          format: email
+                          example: tienda903@sprinter.es
+                          description: Store email
+                        country:
+                          type: string
+                          example: ES
+                          description: Store country in `ISO 3166-Alpha 2`
+                        province:
+                          type: string
+                          description: Store province
+                          example: VALENCIA
+                          minLength: 1
+                        city:
+                          type: string
+                          example: Alzira
+                          minLength: 1
+                          description: Store city
+                        address:
+                          type: string
+                          description: Store address
+                          example: de Albalat PC Carrefour
+                          minLength: 1
+                        zip:
+                          type: string
+                          description: Store ZIP code
+                          example: '18007'
+                        phone:
+                          type: string
+                          description: Store phone
+                          example: '666666666'
+                        enabled:
+                          description: "Is Store enabled?\r\n- `0` The store is disabled\r\n- `1` The store is enabled"
+                          enum:
+                            - 0
+                            - 1
+                        longitude:
+                          type: number
+                          description: Store geoposition
+                          format: float
+                          example: -3.600018
+                        latitude:
+                          type: number
+                          description: Store geoposition
+                          format: float
+                          example: 37.15861
+                        cac:
+                          description: "Click&Collect in store.\r\n- `0` Store with C&C\r\n- `1` Store without C&C"
+                          enum:
+                            - 0
+                            - 1
+                        type:
+                          type: string
+                          description: Store type
+                          example: SPR
+                        has_multichannel:
+                          enum:
+                            - 0
+                            - 1
+                          example: 1
+                        point_multichannel:
+                          enum:
+                            - 0
+                            - 1
+                          example: 1
+                        country_name:
+                          type: string
+                          example: ESPAÑA
+                        cacCriteria:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - id_point
+                        - id_channel
+                        - id_market
+                        - name
+                        - email
+                        - country
+                        - province
+                        - city
+                        - address
+                        - zip
+                        - phone
+                        - enabled
+                        - longitude
+                        - latitude
+                        - cac
+                        - type
+                        - has_multichannel
+                        - point_multichannel
+                        - country_name
+                        - cacCriteria
+              examples:
+                Example 1:
+                  value:
+                    deliveryPoints:
+                      - id_point: '074'
+                        id_channel: 4
+                        id_market: 1
+                        name: Sprinter Avda.Dilar
+                        email: tienda074@sprinter.es
+                        country: ES
+                        province: GRANADA
+                        city: GRANADA
+                        address: Dílar 24
+                        zip: '18007'
+                        phone: '667462234'
+                        enabled: 1
+                        longitude: -3.600018
+                        latitude: 37.15861
+                        cac: 1
+                        type: SPR
+                        has_multichannel: 1
+                        point_multichannel: 1
+                        country_name: ESPAÑA
+                        cacCriteria:
+                          - '20000'
+                Example 2:
+                  value:
+                    deliveryPoints:
+                      - id_point: 96D
+                        id_channel: 4
+                        id_market: 1
+                        name: Sprinter Avda.Dilar
+                        email: tienda903@sprinter.es
+                        country: ES
+                        province: VALENCIA
+                        city: Alzira
+                        address: de Albalat PC Carrefour
+                        zip: '18007'
+                        phone: '666666666'
+                        enabled: 0
+                        longitude: -3.600018
+                        latitude: 37.15861
+                        cac: 0
+                        type: SPR
+                        has_multichannel: 0
+                        point_multichannel: 0
+                        country_name: ESPAÑA
+                        cacCriteria:
+                          - '20000'
+      operationId: J_MOM_STORES_SEARCH
+      description: Get stores availables as delivery points by market & channel.
+      parameters:
+        - schema:
+            type: integer
+            example: 1
+            minimum: 1
+            multipleOf: 1
+          in: query
+          name: id_market
+          required: true
+          description: Market Id
+        - schema:
+            type: integer
+            example: 4
+            format: int32
+          in: query
+          name: id_channel
+          required: true
+          description: Channel Id
+        - schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+              - 2
+            example: 2
+          in: query
+          name: cac
+          description: |
+            Click&Collect store types.
+            - `0` Return the stores with C&C
+            - `1` Return the stores without C&C
+            - `2` Return all the stores
+          required: true
+  /SprinterMulti/api/v1/invoice/generate:
+    post:
+      summary: J_MOM_ORDERS_GENERATE_INVOICE
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id_channel:
+                    type: number
+                  id_order:
+                    $ref: ../models/OrderSequencialId.yaml
+                  invoice:
+                    type: string
+                    format: base64
+                    description: Invoice PDF file in base64
+                  status:
+                    type: string
+                    enum:
+                      - OK
+                      - NA
+                required:
+                  - status
+                additionalProperties: false
+              examples:
+                J_MOM_GENERATE_INVOICE#OK:
+                  value:
+                    id_channel: 4
+                    id_order: '930199'
+                    invoice: JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9D
+                    status: OK
+                J_MOM_GENERATE_INVOICE#ERROR_ORDER_NOT_FOUND:
+                  value:
+                    id_channel: 4
+                    id_order: '999930199'
+                    status: NA
+                J_MOM_GENERATE_INVOICE#BAD_REQUEST:
+                  value:
+                    status: NA
+      operationId: J_MOM_GENERATE_INVOICE
+      description: Generate order invoice for channel 4 orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_channel:
+                  type: string
+                  example: '4'
+                  enum:
+                    - '4'
+                id_order:
+                  $ref: ../models/OrderSequencialId.yaml
+              required:
+                - id_channel
+                - id_order
+  /SprinterMulti/api/v1/order/cancel:
+    post:
+      summary: J_MOM_ORDERS_REFUND
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - OK
+                  message:
+                    type: string
+                required:
+                  - code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_REFUND
+      description: Create a partial/complete refund of an order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  user: SPRINTER\joan.fernandez
+                  id_channel: '4'
+                  id_order: 4069340-SP1
+                  lines:
+                    - id: '14709034'
+                      cause: D06
+                      idDeliveryPoint: '074'
+                  fullCancel: false
+                  cancelInSGA: true
+                  createRefund: true
+              properties:
+                user:
+                  $ref: ../models/Username.yaml
+                id_channel:
+                  type: string
+                  minLength: 1
+                  description: Numeric channel Id
+                  pattern: ^\d+$
+                  example: '3'
+                id_order:
+                  type: string
+                  minLength: 1
+                  pattern: '^([0-9]+)(-SP[0-9]{1,2})?$'
+                  example: 123123-SP1
+                lines:
+                  type: array
+                  uniqueItems: true
+                  minItems: 1
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        minLength: 1
+                        description: '`OrderDetailLine.id`'
+                      cause:
+                        type: string
+                        minLength: 1
+                        description: '`RefundCause.id`'
+                      idDeliveryPoint:
+                        type: string
+                        minLength: 1
+                        description: Store id where the user returns the article. Only when cause is `D06 - Return in a store`
+                    required:
+                      - id
+                      - cause
+                fullCancel:
+                  type: boolean
+                  default: false
+                  description: '`false` by default'
+                cancelInSGA:
+                  type: boolean
+                  description: |-
+                    - `false` if `state.stateid=7`
+                    - `true` in any other case
+                createRefund:
+                  type: boolean
+                  description: |-
+                    - `false` if request `id_channel=3`
+                    - `true` in any other case
+              required:
+                - user
+                - id_channel
+                - id_order
+                - lines
+                - fullCancel
+                - cancelInSGA
+                - createRefund
+            examples: {}
+  /SprinterMulti/api/v1/reserve/print/label:
+    post:
+      summary: J_MOM_RESERVES_PRINT_LABEL
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  label:
+                    type: string
+                    format: base64
+                    description: Label PDF file in base64
+                  order:
+                    $ref: ../models/OrderId.yaml
+                  status:
+                    type: string
+                required:
+                  - label
+                  - order
+                  - status
+              examples:
+                J_MOM_RESERVE_PRINT_LABEL#OK:
+                  value:
+                    label: JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDI5Pj5zdHJl
+                    order: 4/123123-SP1
+                    status: ok
+      operationId: J_MOM_RESERVE_PRINT_LABEL
+      description: Download reserve label in pdf
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order:
+                  $ref: ../models/OrderId.yaml
+              required:
+                - order
+  /SprinterMulti/api/v1/reserve/print/payment:
+    post:
+      summary: J_MOM_RESERVES_GENERATE_INVOICE
+      tags:
+        - reserve
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    $ref: ../models/OrderId.yaml
+                  label:
+                    type: string
+                    format: base64
+                  status:
+                    type: string
+                    enum:
+                      - OK
+                required:
+                  - order
+                  - label
+                  - status
+      operationId: J_MOM_RESERVE_GENERATE_INVOICE
+      description: Download reserve invoice in pdf.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order:
+                  $ref: ../models/OrderId.yaml
+              required:
+                - order
+        description: ''
+  /SprinterPedidosWeb/api/v1/auth/login:
+    post:
+      summary: J_MOM_LOGIN
+      tags:
+        - auth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  code:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    nullable: true
+                required:
+                  - code
+              examples:
+                J_MOM_LOGIN#SUCCESS:
+                  value:
+                    code: OK
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+              examples:
+                J_MOM_LOGIN#INVALID_CREDENTIALS:
+                  value:
+                    code: AUTH
+                    message: "[LDAP: error code 49 - 80090308: LdapErr: DSID-0C090447, comment: AcceptSecurityContext error, data 52e, v3839\0]"
+      operationId: J_MOM_LOGIN
+      description: Validate the user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                password:
+                  type: string
+                  minLength: 1
+                  format: password
+              required:
+                - login
+                - password
+  /SprinterPedidosWeb/api/v1/auth/permissions:
+    post:
+      summary: J_MOM_USERS_GET_PERMISSIONS
+      tags:
+        - auth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  idRol:
+                    type: number
+                    nullable: true
+                  permissions:
+                    type: array
+                    minItems: 1
+                    nullable: true
+                    items:
+                      type: string
+              examples:
+                J_MOM_USERS_GET_PERMISSIONS#SUCCESS:
+                  value:
+                    idRol: 1000
+                    permissions:
+                      - CrearDevolucion
+                      - CambiarEstado
+                J_MOM_USERS_GET_PERMISSIONS#NO_PERMISSIONS:
+                  value: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                required:
+                  - code
+                  - message
+              examples:
+                J_MOM_USERS_GET_PERMISSIONS#BAD_REQUEST:
+                  value:
+                    code: NOT_VALID
+                    message: 'user [null] not valid'
+      operationId: J_MOM_USERS_GET_PERMISSIONS
+      description: Get the user permissions in the page.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+              required:
+                - login
+    parameters: []
+  /SprinterPedidosWeb/api/v1/comments/create:
+    post:
+      summary: J_MOM_ORDERS_CREATE_COMMENT
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - OK
+                  message:
+                    type: string
+                    nullable: true
+                required:
+                  - code
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_CREATE_COMMENT
+      description: Create a nuew comment in an order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                orderSequencialId:
+                  $ref: ../models/OrderSequencialId.yaml
+                idWorkflow:
+                  type: string
+                comment:
+                  type: string
+                  description: Text of the comment
+              required:
+                - login
+                - orderSequencialId
+                - idWorkflow
+                - comment
+  /SprinterPedidosWeb/api/v1/comments/search:
+    post:
+      summary: J_MOM_ORDERS_GET_COMMENTS
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 0
+                items:
+                  $ref: ../models/OrderComment.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_GET_COMMENTS
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                orderSequencialId:
+                  $ref: ../models/OrderSequencialId.yaml
+                idWorkflow:
+                  type: string
+              required:
+                - login
+                - orderSequencialId
+                - idWorkflow
+        description: ''
+      description: Get the comments related to an order.
+  /SprinterPedidosWeb/api/v1/orders/agencyReceipt:
+    parameters: []
+    get:
+      summary: J_MOM_ORDERS_GET_MANIFEST
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/pdf:
+              schema:
+                type: object
+                properties: {}
+      operationId: J_MOM_ORDERS_GET_MANIFEST
+      description: Download a PDF with the order manifest
+      parameters:
+        - schema:
+            type: string
+            pattern: '^([0-9]{1,2}\/[0-9]+)(-SP[0-9]{1,2})?$'
+            example: 4/123123-SP1
+          in: query
+          name: idExternalUnique
+          required: true
+          description: orderId
+  /SprinterPedidosWeb/api/v1/orders/changeState:
+    post:
+      summary: J_MOM_ORDERS_CHANGE_STATE
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                    nullable: true
+                required:
+                  - code
+              examples:
+                J_MOM_ORDERS_CHANGE_STATE#OK:
+                  value:
+                    code: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_CHANGE_STATE
+      description: Change the state of an order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                orderSequencialId:
+                  $ref: ../models/OrderSequencialId.yaml
+                stateId:
+                  type: string
+  '/SprinterPedidosWeb/api/v1/orders/customerReceipt/{orderSequencialId}':
+    parameters:
+      - $ref: '#/components/parameters/orderSequencialId-path-parameter'
+    get:
+      summary: J_MOM_ORDERS_GET_CUSTOMER_RECEIPT
+      tags:
+        - order
+      responses:
+        '200':
+          description: A PDF file
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_GET_CUSTOMER_RECEIPT
+      description: Get the customer delivery receipt for an order in pdf format.
+  /SprinterPedidosWeb/api/v1/orders/detail:
+    post:
+      summary: J_MOM_ORDERS_DETAILS_GET_BY_ID
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  availableStates:
+                    type: array
+                    nullable: true
+                    items:
+                      $ref: ../models/OrderDetailAvailableStates.yaml
+                  lines:
+                    type: array
+                    nullable: true
+                    items:
+                      $ref: ../models/OrderDetailLine.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_DETAILS_GET_BY_ID
+      description: Get orders details by orderId.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+                - login
+                - orderSequencialId
+                - language
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                orderSequencialId:
+                  $ref: ../models/OrderSequencialId.yaml
+                language:
+                  $ref: ../models/Language.yaml
+                  x-stoplight:
+                    id: 4z8fgiefh6iq7
+            examples:
+              J_MOM_ORDERS_DETAILS_GET_BY_ID#REQUEST:
+                value:
+                  login: SPRINTER\\domain.username
+                  orderSequencialId: '34512322'
+                  language: en
+        description: ''
+  /SprinterPedidosWeb/api/v1/orders/order:
+    post:
+      summary: J_MOM_ORDERS_GET_BY_ID
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/OrderComplete.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_GET_BY_ID
+      description: Get order full information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              minProperties: 2
+              maxProperties: 2
+              required:
+                - idExternalUnique
+                - language
+              properties:
+                idExternalUnique:
+                  $ref: ../models/OrderId.yaml
+                language:
+                  $ref: ../models/Language.yaml
+                  x-stoplight:
+                    id: 688l3od1bu22f
+  /SprinterPedidosWeb/api/v1/orders/saveOrderData:
+    post:
+      summary: J_MOM_ORDERS_SAVE
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - OK
+                  message:
+                    type: string
+              examples:
+                J_MOM_ORDERS_SAVE#OK:
+                  value:
+                    code: OK
+                J_MOM_ORDERS_SAVE#ERROR:
+                  value: {}
+      operationId: J_MOM_ORDERS_SAVE
+      description: Save shipping and billing data from an order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id_external_unique: 4/4069340-SP1
+                  id_delivery_point: '961'
+                  address_name: Jose Sanchez
+                  address_address: N-332 Junto Cines Ana
+                  address_city: San Juan
+                  address_zip: '03550'
+                  address_email: spindle245@hotmail.es
+                  address_phone: '644168721'
+                  bill_fiscal_name: ''
+                  bill_identity_card: ''
+                  bill_address: ''
+                  bill_city: ''
+                  bill_zip: ''
+                  bill_email: spindle245@hotmail.es
+                  bill_phone: ''
+                  bill_country: ''
+                  user: joan.fernandez
+              properties:
+                id_external_unique:
+                  $ref: ../models/OrderId.yaml
+                id_delivery_point:
+                  $ref: ../models/StoreId.yaml
+                address_name:
+                  type: string
+                  minLength: 1
+                  description: Name of the customer for the shipping address
+                address_address:
+                  type: string
+                  minLength: 1
+                  description: Address of the customer for the shipping address
+                address_city:
+                  type: string
+                  minLength: 1
+                  description: City of the customer for the shipping address
+                address_zip:
+                  type: string
+                  minLength: 1
+                  description: Postal code of the customer for the shipping address
+                address_email:
+                  type: string
+                  minLength: 1
+                  description: Email of the customer for the shipping address
+                address_phone:
+                  type: string
+                  minLength: 1
+                  description: Phone of the customer for the shipping address
+                bill_fiscal_name:
+                  type: string
+                  description: Fiscal name for billing address
+                bill_identity_card:
+                  type: string
+                  description: Identification number for billing address
+                bill_address:
+                  type: string
+                  description: Address for billing address
+                bill_city:
+                  type: string
+                  description: City for billing address
+                bill_zip:
+                  type: string
+                  description: Postal code for billing address
+                bill_email:
+                  type: string
+                  minLength: 1
+                  description: Email for billing address
+                bill_phone:
+                  type: string
+                  description: Phone for billing address
+                bill_country:
+                  type: string
+                  description: 'Country for billing address in `ISO 3166-1 Alpha-2` code https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes'
+                  minLength: 2
+                  maxLength: 2
+                  pattern: '^[A-Z]{2}$'
+                  example: ES
+                user:
+                  type: string
+                  minLength: 1
+              required:
+                - id_external_unique
+                - id_delivery_point
+                - address_name
+                - address_address
+                - address_city
+                - address_zip
+                - address_email
+                - address_phone
+                - bill_fiscal_name
+                - bill_identity_card
+                - bill_address
+                - bill_city
+                - bill_zip
+                - bill_email
+                - bill_phone
+                - bill_country
+                - user
+  /SprinterPedidosWeb/api/v2/orders/search:
+    post:
+      summary: J_MOM_ORDERS_SEARCH
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Order.yaml
+      operationId: J_MOM_ORDERS_SEARCH
+      description: Search orders by parameters.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filterOwnOrders:
+                  type: boolean
+                  default: false
+                login:
+                  $ref: ../models/Username.yaml
+                order:
+                  type: object
+                  required:
+                    - dir
+                    - field
+                  properties:
+                    dir:
+                      type: string
+                      enum:
+                        - asc
+                        - desc
+                    field:
+                      type: string
+                page:
+                  type: integer
+                  minimum: 1
+                  multipleOf: 1
+                records:
+                  type: integer
+                  minimum: 1
+                  multipleOf: 1
+                stateId:
+                  type: integer
+                  minimum: 1
+                  multipleOf: 1
+                draw:
+                  type: integer
+                  description: Number of line
+                  minimum: 1
+                  multipleOf: 1
+              required:
+                - filterOwnOrders
+                - login
+                - order
+                - page
+                - records
+                - stateId
+            examples: {}
+      deprecated: true
+  /SprinterPedidosWeb/api/v3/orders/search:
+    parameters: []
+    get:
+      summary: J_MOM_ORDERS_SEARCH_V3
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                minProperties: 4
+                maxProperties: 4
+                required:
+                  - data
+                  - pagination
+                  - sorting
+                  - total
+                properties:
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: jtt3olhq8qdth
+                    minItems: 0
+                    maxItems: 50
+                    uniqueItems: true
+                    items:
+                      $ref: ../models/OrderV2.yaml
+                      x-stoplight:
+                        id: h1gxnbshg6whj
+                  pagination:
+                    type: object
+                    x-stoplight:
+                      id: vomjard03hxos
+                    additionalProperties: false
+                    minProperties: 3
+                    maxProperties: 3
+                    required:
+                      - limit
+                      - offset
+                      - count
+                    properties:
+                      limit:
+                        type: integer
+                        x-stoplight:
+                          id: q0zn1aol9jmd1
+                        minimum: 0
+                        multipleOf: 1
+                        maximum: 100
+                        default: 25
+                        description: Number of elements per page to retrieve
+                      offset:
+                        type: integer
+                        x-stoplight:
+                          id: 9mt0hc3kbjhbv
+                        minimum: 0
+                        multipleOf: 1
+                        default: 0
+                        description: Sets the current page (or offset). It is zero-based.
+                      count:
+                        type: integer
+                        x-stoplight:
+                          id: 7gj1igoyuo2fp
+                        minimum: 0
+                        multipleOf: 1
+                        description: length of items in data
+                  sorting:
+                    type: object
+                    x-stoplight:
+                      id: 7b7x8qufcwgbk
+                    additionalProperties: false
+                    minProperties: 2
+                    maxProperties: 2
+                    required:
+                      - orderDirection
+                      - orderFieldName
+                    properties:
+                      orderDirection:
+                        x-stoplight:
+                          id: fsp6kiwayfv3l
+                        enum:
+                          - ASC
+                          - DESC
+                      orderFieldName:
+                        type: string
+                        x-stoplight:
+                          id: o5iosekdq59fs
+                        example: id
+                  total:
+                    type: integer
+                    x-stoplight:
+                      id: igqral8od6tr7
+                    minimum: 0
+                    description: total items
+              examples:
+                Example 1:
+                  value:
+                    data:
+                      - id: '323152015'
+                        idExternalUnique: 4/6579972-SP1
+                        date: '2023-09-24 10:19:34'
+                        customerIdentityCard: '262262649'
+                        customerName: John Doe
+                        customerPhone: '+34555444333'
+                        totalUnits: null
+                        totalAmount: 5.99
+                        discountType: '-1'
+                        discountDescription: ''
+                        discountValue: 0
+                        authNumber: C7H88VR64ZBR8HG2
+                        deliveryPoint: 9YX
+                        deliveryPointName: Sz. Lisboa Colombo
+                        tracking: ''
+                        stateId: '204'
+                        stateName: Split prep. (store)
+                        hours: 1611/1612
+                        commentsCount: 0
+                        agency: ''
+                        cartonId: '00184005000001509565'
+                        email: user.email@gmail.com
+                        orderStore: '911'
+                        orderStoreName: Sp. Web
+                        nameMarket: Portugal
+                        paymentMethod: MBWAY
+                        preparationZone: 0
+                        idStorePreparation: 9YX
+                        nameStorePreparation: Sport Zone Colombo
+                        trackingLink: ''
+                        id_market: 2
+                    pagination:
+                      limit: 10
+                      offset: 0
+                      count: 1
+                    sorting:
+                      orderDirection: ASC
+                      orderFieldName: id
+                    total: 1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ErrorV2.yaml
+              examples:
+                Example 1:
+                  value:
+                    message: Error Request Invalid Arguments
+                    traceparent: 00-355ec15987d0c3b25cfce2e3455c149a-22204b396147b45c-01
+                    details:
+                      - code: NULL_VALUE
+                        target: phoneNumber
+                        message: Phone number must not be null
+                      - code: NULL_VALUE
+                        target: lastName
+                        message: Last name must not be null
+                      - code: INVALID_VALUE
+                        target: address
+                        message: Address is not valid
+      operationId: J_MOM_ORDERS_SEARCH_V3
+      x-stoplight:
+        id: 20l2012jidvp2
+      description: Search orders by parameters.
+      parameters:
+        - $ref: '#/components/parameters/offset-pagination-query'
+        - $ref: '#/components/parameters/limit-pagination-query'
+        - schema:
+            type: integer
+            format: int32
+            multipleOf: 1
+            minimum: 1
+            maximum: 1000
+          in: query
+          name: stateId
+          description: Order state Id
+        - $ref: '#/components/parameters/sort-query'
+        - schema:
+            type: boolean
+          in: query
+          name: filterOwnOrders
+          description: Must be `true` if `stateId` param is used. `false` if `stateId` param is not used.
+          required: true
+        - schema:
+            type: string
+            example: '00184005000001528331'
+          in: query
+          name: cartonId
+          description: ID of the carton
+        - schema:
+            type: string
+            example: 44332211A
+          in: query
+          name: customerIdentityCard
+          description: Customer ID card number
+        - schema:
+            type: string
+            example: John Doe
+          in: query
+          name: customerName
+          description: Customer name
+        - schema:
+            type: integer
+            format: int32
+            minimum: 0
+            multipleOf: 1
+            example: 20
+          in: query
+          name: hours
+          description: Hours that the order has past in the state
+        - $ref: '#/components/parameters/language-query'
+  /SprinterPedidosWeb/api/v1/refunds/cause:
+    get:
+      summary: J_MOM_REFUNDS_GET_CAUSES
+      tags:
+        - order
+      responses:
+        '200':
+          description: Get the refunds causes
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  $ref: ../models/RefundCause.yaml
+              examples:
+                J_MOM_ORDERS_GET_REFUNDS_CAUSES#OK:
+                  value:
+                    - id: D01
+                      description: Artículo con tara o defectuoso
+                      doStockTransfer: false
+                    - id: D05
+                      description: Desistimiento
+                      doStockTransfer: false
+                    - id: D06
+                      description: Devolución en tienda
+                      doStockTransfer: true
+      operationId: J_MOM_REFUNDS_GET_CAUSES
+      description: Get all the availabe order refund causes.
+  /SprinterPedidosWeb/api/v1/refunds/changeState:
+    post:
+      summary: J_MOM_REFUNDS_CHANGE_STATE
+      tags:
+        - refund
+      responses:
+        '200':
+          description: Change state succeeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    default: OK
+                    enum:
+                      - OK
+                required:
+                  - code
+      operationId: J_MOM_REFUNDS_CHANGE_STATE
+      description: Change the state of a refund
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                idRefund:
+                  type: string
+                  pattern: '^[0-9]+$'
+                  description: Numeric Refund Id
+                stateId:
+                  type: string
+                  pattern: '^[0-9]+$'
+                  description: Numeric State Id
+              required:
+                - login
+                - idRefund
+                - stateId
+  /SprinterPedidosWeb/api/v1/refunds/detail:
+    post:
+      summary: J_MOM_REFUNDS_DETAILS_GET_BY_ID
+      tags:
+        - refund
+      responses:
+        '200':
+          description: Return the available refund states and the refund lines
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  availableStates:
+                    type: array
+                    items:
+                      $ref: ../models/OrderDetailAvailableStates.yaml
+                  lines:
+                    type: array
+                    items:
+                      $ref: ../models/RefundDetailLine.yaml
+      operationId: J_MOM_REFUNDS_DETAILS_GET_BY_ID
+      description: Get refund details by refund Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - login
+                - idRefund
+                - language
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                idRefund:
+                  type: string
+                  pattern: '^[0-9]+$'
+                  description: Numeric Refund Id
+                language:
+                  $ref: ../models/Language.yaml
+                  x-stoplight:
+                    id: cr0j9etekh56t
+  /SprinterPedidosWeb/api/v1/refunds/search:
+    post:
+      summary: J_MOM_REFUNDS_SEARCH
+      tags:
+        - refund
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                uniqueItems: true
+                minItems: 0
+                items:
+                  $ref: ../models/Refund.yaml
+      operationId: J_MOM_REFUNDS_SEARCH
+      description: Search refunds by parameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                stateId:
+                  type: string
+                  pattern: ^\d+$
+                  description: '`OrderStates.key`'
+                customerIdentityCard:
+                  type: string
+                  description: Customer ID
+                  deprecated: true
+                customerName:
+                  type: string
+                  description: Name of the costumer
+                idExternalUnique:
+                  $ref: ../models/OrderId.yaml
+              required:
+                - login
+      deprecated: true
+  /SprinterPedidosWeb/api/v2/refunds/search:
+    get:
+      summary: J_MOM_REFUNDS_SEARCH_V2
+      tags:
+        - refund
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                minProperties: 4
+                maxProperties: 4
+                required:
+                  - data
+                  - pagination
+                  - sorting
+                  - total
+                properties:
+                  data:
+                    x-stoplight:
+                      id: wg98pqfg7p42m
+                    type: array
+                    uniqueItems: true
+                    minItems: 0
+                    items:
+                      $ref: ../models/Refund.yaml
+                      x-stoplight:
+                        id: xo7grxk9d2ej7
+                  pagination:
+                    type: object
+                    x-stoplight:
+                      id: xe1vfvfh5go0n
+                    additionalProperties: false
+                    minProperties: 3
+                    maxProperties: 3
+                    required:
+                      - limit
+                      - offset
+                      - count
+                    properties:
+                      limit:
+                        type: integer
+                        x-stoplight:
+                          id: 01kuydrqebgc4
+                        minimum: 0
+                        multipleOf: 1
+                        maximum: 100
+                        default: 25
+                        description: Number of elements per page to retrieve
+                      offset:
+                        type: integer
+                        x-stoplight:
+                          id: vgkfyt44yk5nb
+                        minimum: 0
+                        multipleOf: 1
+                        default: 0
+                        description: Sets the current page (or offset). It is zero-based.
+                      count:
+                        type: integer
+                        x-stoplight:
+                          id: otce2dkoc5s4x
+                        minimum: 0
+                        multipleOf: 1
+                        description: length of items in data
+                  sorting:
+                    type: object
+                    x-stoplight:
+                      id: ufrrpt11ycx49
+                    additionalProperties: false
+                    minProperties: 2
+                    maxProperties: 2
+                    required:
+                      - orderDirection
+                      - orderFieldName
+                    properties:
+                      orderDirection:
+                        type: string
+                        x-stoplight:
+                          id: wu5obl2mte4fa
+                        enum:
+                          - ASC
+                          - DESC
+                        description: The results in `data` are ordered by this direction.
+                      orderFieldName:
+                        type: string
+                        x-stoplight:
+                          id: q4r7x4orilaxw
+                        example: id
+                        description: The results in `data` are ordered by this field.
+                  total:
+                    type: integer
+                    x-stoplight:
+                      id: 1s67tzariwn3l
+                    minimum: 0
+                    description: total items
+      operationId: J_MOM_REFUNDS_SEARCH_V2
+      x-stoplight:
+        id: pmtdq1imh6wnw
+      description: Search refunds by parameters.
+      parameters:
+        - $ref: '#/components/parameters/offset-pagination-query'
+        - $ref: '#/components/parameters/limit-pagination-query'
+        - $ref: '#/components/parameters/sort-query'
+        - schema:
+            type: integer
+            format: int32
+            multipleOf: 1
+            example: 204
+          in: query
+          name: stateId
+          description: Refund state id
+        - schema:
+            type: string
+            example: D01
+          in: query
+          name: refundReasonId
+          description: Refund reason id
+        - schema:
+            type: string
+            example: 4/6414865-SP1
+          in: query
+          name: idExternalUnique
+          description: Order id
+        - schema:
+            type: string
+            example: John Doe
+          in: query
+          name: customerName
+          description: Customer name
+        - schema:
+            type: string
+            example: JohnDoe@gmail.com
+          in: query
+          name: customerEmail
+          description: Customer email
+        - schema:
+            type: string
+            example: +34 600 000 000
+          in: query
+          name: customerPhone
+          description: Customer phone
+        - schema:
+            type: string
+          in: query
+          name: authorizationNumber
+          description: Authorization number
+        - $ref: '#/components/parameters/language-query'
+  /SprinterPedidosWeb/api/v1/refunds/setAmountToRefund:
+    post:
+      summary: J_MOM_REFUNDS_SAVE_AMOUNT
+      tags:
+        - refund
+      responses:
+        '200':
+          description: The refund amount changed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    default: OK
+                    enum:
+                      - OK
+                  message:
+                    type: string
+                    nullable: true
+                required:
+                  - code
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_REFUNDS_SAVE_AMOUNT
+      description: Save the new amount to refund to the customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                login:
+                  $ref: ../models/Username.yaml
+                idRefund:
+                  type: string
+                  minLength: 1
+                  pattern: '^[0-9]+$'
+                  description: Numeric refund id
+                amountToRefund:
+                  type: string
+                  minLength: 1
+                  pattern: '^\d+\.\d{2}$'
+                  example: '15.99'
+                  description: Amount to refund in euros with format `N.NN`
+              required:
+                - login
+                - idRefund
+                - amountToRefund
+            examples: {}
+  /SprinterPedidosWeb/api/v1/states:
+    post:
+      summary: J_MOM_ORDERS_GET_STATES
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  $ref: ../models/OrderStates.yaml
+              examples:
+                J_MOM_ORDERS_GET_STATES#OK:
+                  value:
+                    - workflow: PED
+                      key: '204'
+                      label: Prep. dividido (tienda)
+                      amount: 337
+                      incidence: false
+                    - workflow: PED
+                      key: '205'
+                      label: Ped. cancelado pdte. liberar
+                      amount: 0
+                      incidence: false
+                    - workflow: PED
+                      key: '206'
+                      label: Ped. liberado
+                      amount: 977
+                      incidence: false
+                    - workflow: PED
+                      key: '208'
+                      label: Envío pdte. (tienda)
+                      amount: 444
+                      incidence: false
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: J_MOM_ORDERS_GET_STATES
+      description: Get order states by workflow and the number of orders that are currently in each state.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - idWorkflow
+                - login
+                - language
+              properties:
+                idWorkflow:
+                  type: string
+                  description: 'Comma separated workflows IDS. Available: `PED`, ` RES` , `DEV`'
+                login:
+                  $ref: ../models/Username.yaml
+                language:
+                  $ref: ../models/Language.yaml
+                  x-stoplight:
+                    id: uhw5pqopech80
+                  description: Language code in ISO 639-1 format
+components:
+  parameters:
+    orderSequencialId-path-parameter:
+      name: orderSequencialId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[0-9]+'
+        minLength: 1
+        example: '961392'
+      description: Numeric sequencial order id
+    offset-pagination-query:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        multipleOf: 1
+        example: 1
+      description: Sets which page to return
+    limit-pagination-query:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        multipleOf: 1
+        maximum: 100
+      description: Sets the maximum number of results to be returned
+    sort-query:
+      name: sort
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: '^(asc|desc)\:[\w_]*$'
+        example: 'asc:id'
+        minLength: 5
+      description: Sorting query parameter
+    language-query:
+      name: language
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Language code in ISO 639-1 format
+  examples: {}
+tags:
+  - name: auth
+    description: Auth endpoints
+  - name: order
+    description: Orders endpoints
+  - name: refund
+    description: Refunds endpoints
+  - name: reserve
+    description: Reserves endpoints
+  - name: store
+    description: Stores endpoints

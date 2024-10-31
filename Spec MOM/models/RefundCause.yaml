@@ -1,0 +1,16 @@
+title: RefundCause
+type: object
+required:
+  - id
+  - description
+  - doStockTransfer
+properties:
+  id:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  doStockTransfer:
+    type: boolean
+description: Order refund causes

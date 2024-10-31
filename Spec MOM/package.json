@@ -1,0 +1,78 @@
+{
+  "name": "@sprinterfront/spec-mom",
+  "version": "1.0.0",
+  "description": "Multichannel Order Management project specifications",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git"
+  },
+  "author": "Sprinter",
+  "contributors": [
+    {
+      "name": "Frontend Solutions Team",
+      "email": "grupo.front.tic@sprintersports.com"
+    }
+  ],
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@google/semantic-release-replace-plugin",
+        {
+          "replacements": [
+            {
+              "files": [
+                "reference/mom-java.openapi.yaml"
+              ],
+              "from": "version: .*",
+              "to": "version: ${nextRelease.version}",
+              "results": [
+                {
+                  "file": "reference/mom-java.openapi.yaml",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                }
+              ],
+              "countMatches": true
+            }
+          ]
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "reference/template.openapi.yaml"
+          ]
+        }
+      ],
+      "@semantic-release/gitlab"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@google/semantic-release-replace-plugin": "^1.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab-config": "^10.0.0",
+    "husky": "^6.0.0",
+    "semantic-release": "^19.0.2"
+  }
+}

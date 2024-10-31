@@ -1,0 +1,14 @@
+{
+  "name": "sprinterfront/spec-mom",
+  "description": "Multichannel Order Management project specifications",
+  "type": "library",
+  "version": "1.0.0",
+  "license": "(c) Sprinter Megacentros del Deporte SL",
+  "authors": [
+    {
+      "name": "Frontend Solutions Team",
+      "email": "grupo.front.tic@sprintersports.com"
+    }
+  ],
+  "require": {}
+}

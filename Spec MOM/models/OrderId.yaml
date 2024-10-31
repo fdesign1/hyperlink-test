@@ -1,0 +1,7 @@
+type: string
+title: OrderId
+x-tags:
+  - order
+description: Order Id with market
+pattern: '^([0-9]{1,2}\/[0-9]+)(-SP[0-9]{1,2})?$'
+example: 4/123123-SP1

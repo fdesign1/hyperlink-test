@@ -1,0 +1,8 @@
+title: Language
+x-stoplight:
+  id: zbz2neqhaiaa5
+type: string
+example: en
+minLength: 2
+maxLength: 2
+description: Language code in ISO 639-1 format
